@@ -1,6 +1,7 @@
 package com.esprit.kaddem.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Etudiant {
     @Enumerated(EnumType.STRING)
     private  Niveau niveau;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "etudiant")
     private List<Contrat> contrats;
 
