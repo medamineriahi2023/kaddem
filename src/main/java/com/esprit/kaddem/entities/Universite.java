@@ -4,6 +4,8 @@ package com.esprit.kaddem.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "universite")
@@ -17,8 +19,7 @@ public class Universite {
     @Column(name = "nomUniv")
     private String nomUniv;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Department department;
-
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Department> departments;
 
 }

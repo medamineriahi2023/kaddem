@@ -17,9 +17,12 @@ public interface EtudiantService {
     Optional<Etudiant> retrieveEtudiant(Integer idEtudiant);
 
     void removeEtudiant(Integer idEtudiant);
+    Optional<Etudiant> getByNamePrenom(String name,String prenom);
 
     void assignEtudiantToDepartement (Integer etudiantId, Integer departementId) ;
 
     Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat,
                                                      Integer idEquipe);
+
+    List<Etudiant> getEtudiantsByDepartement (Integer idDepartement);
 }

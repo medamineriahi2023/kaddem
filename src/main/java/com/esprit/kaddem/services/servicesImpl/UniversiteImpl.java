@@ -45,7 +45,7 @@ public class UniversiteImpl implements UniversiteService {
         Universite u = this.retrieveUniversite(idUniversite).orElse(null);
         Department d =  departmentService.retrieveDepartement(idDepartement).orElse(null);
         if (u!= null && d!= null ){
-            u.setDepartment(d);
+            u.getDepartments().add(d);
             updateUniversite(u);
         }
     }

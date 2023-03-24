@@ -6,6 +6,7 @@ import com.esprit.kaddem.services.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,5 +36,10 @@ public class DepartmentImpl implements DepartmentService {
     @Override
     public Optional<Department> retrieveDepartement(Integer idDepart) {
         return departmentRepository.findById(idDepart);
+    }
+
+    @Override
+    public List<Department> retrieveDepartementsByUniversite(Integer idUniversite) {
+        return new ArrayList<>();
     }
 }

@@ -10,7 +10,6 @@ import com.esprit.kaddem.services.DepartmentService;
 import com.esprit.kaddem.services.EquipeService;
 import com.esprit.kaddem.services.EtudiantService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,10 +19,10 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class EtudiantImpl implements EtudiantService {
 
-    public final EtudiantRepository etudiantRepository;
-    public final DepartmentService departmentService;
-    public final ContratService contratService;
-    public final EquipeService equipeService;
+    private final EtudiantRepository etudiantRepository;
+    private final DepartmentService departmentService;
+    private final ContratService contratService;
+    private final EquipeService equipeService;
 
     @Override
     public List<Etudiant> retrieveAllEtudiants() {
@@ -48,8 +47,14 @@ public class EtudiantImpl implements EtudiantService {
     @Override
     public void removeEtudiant(Integer idEtudiant) {
         etudiantRepository.deleteById(idEtudiant);
+    }
+
+    @Override
+    public Optional<Etudiant> getByNamePrenom(String name,String prenom) {
+        return etudiantRepository.findByNomAndPrenom(name, prenom);
 
     }
+
 
     @Override
     public void assignEtudiantToDepartement(Integer etudiantId, Integer departementId) {
@@ -73,5 +78,10 @@ public class EtudiantImpl implements EtudiantService {
         equipeService.updateEquipe(equipe);
         contratService.updateContrat(c);
         return savedEtudiant;
+    }
+
+    @Override
+    public List<Etudiant> getEtudiantsByDepartement(Integer idDepartement) {
+        return etudiantRepository.findAllByDepartmentIdDpart(idDepartement);
     }
 }

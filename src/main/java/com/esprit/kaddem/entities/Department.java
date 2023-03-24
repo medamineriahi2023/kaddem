@@ -18,10 +18,7 @@ public class Department {
 
     private String nomDepart;
 
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "department")
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "department")
     @JsonIgnore
     List<Etudiant> etudiants;
-
-
 }

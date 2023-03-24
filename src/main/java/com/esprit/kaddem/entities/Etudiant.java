@@ -18,9 +18,13 @@ public class Etudiant {
     private Integer id;
 
     private String nom;
+    private String prenom;
 
     @Enumerated(EnumType.STRING)
     private  Niveau niveau;
+
+    @Enumerated(EnumType.STRING)
+    private OptionE optionE;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "etudiant")
@@ -31,4 +35,5 @@ public class Etudiant {
 
     @ManyToMany(mappedBy = "etudiants",cascade = CascadeType.ALL)
     private List<Equipe> equipes;
+
 }
